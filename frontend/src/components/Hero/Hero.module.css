@@ -1,0 +1,90 @@
+.hero {
+  position: relative;
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto;
+  padding-bottom: var(--space-2xl);
+}
+
+.iconLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floatIcon {
+  position: absolute;
+  opacity: 0.22;
+  filter: blur(0.3px);
+}
+
+.badge {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  color: var(--accent-teal);
+  font-size: var(--fs-small);
+  font-weight: 600;
+  margin-bottom: var(--space-lg);
+}
+
+.title {
+  position: relative;
+  z-index: 1;
+  font-size: var(--fs-h1);
+  color: var(--text-dark-primary);
+  margin-bottom: var(--space-md);
+  letter-spacing: -0.02em;
+}
+
+.titleGradient {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.subtitle {
+  position: relative;
+  z-index: 1;
+  font-size: var(--fs-body-lg);
+  color: var(--text-dark-secondary);
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+@media (max-width: 768px) {
+  .subtitle {
+    font-size: var(--fs-body);
+  }
+
+  .floatIcon {
+    opacity: 0.15;
+  }
+}
+
+@media (max-width: 480px) {
+  .floatIcon {
+    transform: scale(0.75);
+  }
+
+  @media (max-width: 640px) {
+  .floatIcon:nth-child(n + 3) {
+    display: none;
+  }
+
+  .floatIcon {
+    opacity: 0.15;
+  }
+}
+}
+
+

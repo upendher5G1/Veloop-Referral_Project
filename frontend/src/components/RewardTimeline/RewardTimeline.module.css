@@ -1,0 +1,129 @@
+.panel {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(155deg, #12151f 0%, #1a1f2e 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-lg);
+  box-shadow: 0 20px 60px rgba(10, 12, 20, 0.35);
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-mesh);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: var(--space-2xl);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  color: var(--text-dark-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-size: var(--fs-body-lg);
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.timeline {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding-left: 8px;
+}
+
+.trackBg {
+  position: absolute;
+  left: 23px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.trackFill {
+  position: absolute;
+  left: 23px;
+  top: 8px;
+  bottom: 8px;
+  width: 2px;
+  background: var(--gradient-primary);
+}
+
+.step {
+  position: relative;
+  display: flex;
+  gap: var(--space-md);
+  padding-bottom: var(--space-xl);
+}
+
+.step:last-child {
+  padding-bottom: 0;
+}
+
+.node {
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1a1f2e;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  color: var(--text-dark-muted);
+}
+
+.nodeAchieved {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: #fff;
+  box-shadow: var(--shadow-glow-indigo);
+}
+
+.content {
+  padding-top: 6px;
+}
+
+.stepTitle {
+  font-size: 1.05rem;
+  color: var(--text-dark-primary);
+  margin-bottom: 4px;
+}
+
+.stepDesc {
+  font-size: var(--fs-small);
+  color: var(--text-dark-secondary);
+  line-height: 1.5;
+}
+
+@media (max-width: 600px) {
+  .panel {
+    padding: var(--space-xl) var(--space-md);
+  }
+
+  .node {
+    width: 40px;
+    height: 40px;
+  }
+
+  .trackBg,
+  .trackFill {
+    left: 19px;
+  }
+}

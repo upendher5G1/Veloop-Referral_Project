@@ -1,0 +1,101 @@
+/* ============================================
+   VELoop Referral Page — Design System
+   Mixed Theme: Dark Hero + Light Sections
+   ============================================ */
+
+:root {
+  /* ---------- Backgrounds ---------- */
+  --bg-dark-primary: #0b0e14;
+  --bg-dark-secondary: #151a24;
+  --bg-dark-gradient: linear-gradient(180deg, #0b0e14 0%, #151a24 100%);
+  --bg-light-primary: #f7f8fc;
+  --bg-light-secondary: #ffffff;
+
+  /* ---------- Brand Accents ---------- */
+  --accent-indigo: #6c5ce7;
+  --accent-indigo-light: #8b7cf6;
+  --accent-teal: #00d9b5;
+  --accent-amber: #ffb020;
+  --accent-emerald: #22c55e;
+  --accent-rose: #f43f5e;
+
+  /* ---------- Gradients ---------- */
+  --gradient-primary: linear-gradient(135deg, #6c5ce7 0%, #00d9b5 100%);
+  --gradient-primary-hover: linear-gradient(135deg, #7d6df0 0%, #12e6c2 100%);
+  --gradient-gold: linear-gradient(135deg, #ffb020 0%, #ff7a45 100%);
+  --gradient-radial-glow: radial-gradient(circle at 30% 20%, rgba(108, 92, 231, 0.35) 0%, transparent 60%);
+  --gradient-mesh: radial-gradient(circle at 15% 15%, rgba(108, 92, 231, 0.25) 0%, transparent 45%),
+                    radial-gradient(circle at 85% 30%, rgba(0, 217, 181, 0.18) 0%, transparent 45%),
+                    radial-gradient(circle at 50% 90%, rgba(255, 176, 32, 0.12) 0%, transparent 50%);
+
+  /* ---------- Text (Dark backgrounds) ---------- */
+  --text-dark-primary: #ffffff;
+  --text-dark-secondary: #b8bcc8;
+  --text-dark-muted: #7a7f8f;
+
+  /* ---------- Text (Light backgrounds) ---------- */
+  --text-light-primary: #1a1d29;
+  --text-light-secondary: #6b7280;
+  --text-light-muted: #9ca3af;
+
+  /* ---------- Glass / Card Surfaces ---------- */
+  --glass-bg: rgba(255, 255, 255, 0.06);
+  --glass-border: rgba(255, 255, 255, 0.12);
+  --glass-blur: blur(20px);
+
+  --card-light-bg: #ffffff;
+  --card-light-shadow: 0 4px 24px rgba(17, 17, 26, 0.06);
+  --card-light-shadow-hover: 0 12px 32px rgba(17, 17, 26, 0.1);
+
+  --card-dark-bg: rgba(255, 255, 255, 0.04);
+  --card-dark-border: rgba(255, 255, 255, 0.08);
+
+  /* ---------- Spacing Scale ---------- */
+  --space-xs: 8px;
+  --space-sm: 12px;
+  --space-md: 20px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+  --space-2xl: 72px;
+  --space-3xl: 100px;
+
+  /* ---------- Radius ---------- */
+  --radius-sm: 10px;
+  --radius-md: 16px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* ---------- Shadows ---------- */
+  --shadow-glow-indigo: 0 8px 30px rgba(108, 92, 231, 0.35);
+  --shadow-glow-teal: 0 8px 30px rgba(0, 217, 181, 0.3);
+  --shadow-glow-amber: 0 8px 30px rgba(255, 176, 32, 0.3);
+
+  /* ---------- Typography ---------- */
+  --font-heading: 'Sora', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --fs-h1: clamp(2.2rem, 5vw, 3.5rem);
+  --fs-h2: clamp(1.8rem, 4vw, 2.6rem);
+  --fs-h3: clamp(1.3rem, 3vw, 1.75rem);
+  --fs-body-lg: 1.125rem;
+  --fs-body: 1rem;
+  --fs-small: 0.875rem;
+  --fs-xs: 0.75rem;
+
+  /* ---------- Transitions ---------- */
+  --transition-fast: 0.2s ease;
+  --transition-base: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ---------- Z-index scale ---------- */
+  --z-base: 1;
+  --z-card: 10;
+  --z-nav: 100;
+  --z-modal: 1000;
+
+  /* ---------- Layout ---------- */
+  --container-max: 1280px;
+  --container-padding: clamp(16px, 5vw, 64px);
+  --header-height: 64px;
+}

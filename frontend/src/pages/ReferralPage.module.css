@@ -1,0 +1,72 @@
+.page {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-dark-gradient);
+}
+
+/* ============================================
+   DARK ZONE — Hero, Referral Card, Share Buttons
+   ============================================ */
+.darkZone {
+  position: relative;
+  padding-top: calc(var(--space-3xl) + var(--header-height));
+  padding-bottom: var(--space-2xl);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.meshOverlay {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-mesh);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.darkZone > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   LIGHT ZONE (renamed conceptually — now dark too)
+   Hosts: Stats, Progress, Rewards, Rules, FAQ
+   ============================================ */
+.lightZone {
+  position: relative;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-3xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.lightZone > .container {
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   Responsive Breakpoints
+   ============================================ */
+@media (max-width: 1024px) {
+  .darkZone,
+  .lightZone {
+    padding-top: calc(var(--space-2xl) + var(--header-height));
+    padding-bottom: var(--space-2xl);
+  }
+}
+
+@media (max-width: 768px) {
+  .darkZone,
+  .lightZone {
+    padding-top: calc(var(--space-xl) + var(--header-height));
+    padding-bottom: var(--space-xl);
+  }
+
+  .lightZone {
+    gap: var(--space-xl);
+  }
+}

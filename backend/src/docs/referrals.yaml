@@ -1,0 +1,133 @@
+openapi: 3.0.0
+paths:
+  /auth/register:
+    post:
+      summary: Register a new user
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                phone: { type: string }
+                password: { type: string, minLength: 8 }
+                deviceToken: { type: string, description: "Opaque client-generated device token" }
+      responses:
+        '201':
+          description: Account created. A unique referral code is generated server-side.
+        '409':
+          description: Email already registered.
+
+  /auth/login:
+    post:
+      summary: Log in and receive a JWT
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email: { type: string, format: email }
+                password: { type: string }
+      responses:
+        '200': { description: Login successful, returns JWT + user profile }
+        '401': { description: Invalid credentials }
+
+  /referrals/attribute:
+    post:
+      summary: Attribute the current user to a referrer's code
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [referralCode]
+              properties:
+                referralCode: { type: string, example: VELOOP123 }
+      responses:
+        '201': { description: Referral created (status PENDING or FRAUD_REVIEW) }
+        '400':
+          description: INVALID_REFERRAL_CODE or SELF_REFERRAL_DETECTED
+        '403':
+          description: SELF_REFERRAL_DETECTED (device-based block), may include maskedEmail
+        '409':
+          description: REFERRAL_ALREADY_ASSIGNED - user already has a referrer
+        '429': { description: RATE_LIMITED }
+
+  /referrals/me:
+    get:
+      summary: Get the authenticated user's full referral dashboard
+      responses:
+        '200':
+          description: >
+            Backend-computed referral code/link, totals, per-reward-type
+            earned totals, milestone status, and recent referrals. Nothing
+            here is accepted from the client.
+
+  /referrals:
+    get:
+      summary: List the authenticated user's referrals (paginated)
+      parameters:
+        - in: query
+          name: page
+          schema: { type: integer, minimum: 1, default: 1 }
+        - in: query
+          name: limit
+          schema: { type: integer, minimum: 1, maximum: 50, default: 20 }
+        - in: query
+          name: status
+          schema: { type: string, enum: [all, successful, pending, spam] }
+      responses:
+        '200': { description: Paginated referral list }
+
+  /referrals/{id}/progress:
+    get:
+      summary: Get progress detail for one referral owned by the authenticated user
+      parameters:
+        - in: path
+          name: id
+          required: true
+          schema: { type: string, format: uuid }
+      responses:
+        '200': { description: Ad-watch progress, milestones reached/remaining, reward status }
+        '404': { description: Referral not found or not owned by this user }
+
+  /referrals/spam:
+    get:
+      summary: Get the authenticated user's spam/fraud referral summary
+      responses:
+        '200': { description: "spamCount and recentSpam - no internal fraud signals exposed" }
+
+  /referrals/ad-events:
+    post:
+      summary: Submit a server-verifiable ad-completion event
+      description: >
+        This is NOT "adsWatched: N" - it is a single verified completion
+        event with a provider session receipt. The backend independently
+        verifies it (see adVerificationService) and derives eligible-ad
+        counts itself; duplicate eventIds are rejected as no-ops.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [eventId, sessionId, timestamp]
+              properties:
+                eventId: { type: string, description: "Unique idempotency key for this ad completion" }
+                sessionId: { type: string, description: "Provider session/receipt reference" }
+                timestamp: { type: string, format: date-time }
+                provider: { type: string, default: dev-test }
+      responses:
+        '201': { description: Event verified and processed (or newly credited milestones listed) }
+        '200': { description: Duplicate event - no-op, safe to retry }
+        '422': { description: Event failed provider verification }
+        '429': { description: RATE_LIMITED }

@@ -1,0 +1,116 @@
+.card {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-lg);
+  border-radius: var(--radius-xl);
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  box-shadow: var(--shadow-glow-indigo);
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+  overflow: hidden;
+}
+.label {
+  font-size: var(--fs-xs);
+  color: var(--text-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 600;
+}
+
+.value {
+  font-size: var(--fs-h3);
+  font-weight: 700;
+  color: var(--text-dark-primary);
+  font-family: var(--font-heading);
+  letter-spacing: 0.04em;
+}
+
+.valueSmall {
+  font-size: var(--fs-body);
+  color: var(--text-dark-secondary);
+  max-width: 100%;
+  display: block;
+  word-break: break-all;
+  overflow-wrap: break-word;
+  white-space: normal;
+}
+.divider {
+  height: 1px;
+  background: var(--glass-border);
+  margin: var(--space-md) 0;
+}
+
+
+
+.copyBtnWrap {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.copyBtn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  padding: 10px 18px;
+  border-radius: var(--radius-pill);
+  background: var(--gradient-primary);
+  color: #fff;
+  font-size: var(--fs-small);
+  font-weight: 600;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.copyBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-glow-teal);
+}
+
+.copyBtn:active {
+  transform: translateY(0) scale(0.96);
+  box-shadow: var(--shadow-glow-teal);
+}
+@media (max-width: 600px) {
+  .row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-sm);
+  }
+
+  .copyBtn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .value {
+    font-size: var(--fs-h3);
+  }
+}
+
+.inlineError {
+  margin-bottom: 12px;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(255, 99, 99, 0.12);
+  border: 1px solid rgba(255, 99, 99, 0.3);
+  color: #ff9b9b;
+  font-size: 0.85rem;
+}

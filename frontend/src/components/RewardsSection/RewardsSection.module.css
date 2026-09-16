@@ -1,0 +1,215 @@
+.panel {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(155deg, #12151f 0%, #1a1f2e 100%);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-lg);
+  box-shadow: 0 20px 60px rgba(10, 12, 20, 0.35);
+  overflow: hidden;
+  perspective: 1200px;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-mesh);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  color: var(--text-dark-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-size: var(--fs-body-lg);
+  color: var(--text-dark-secondary);
+}
+
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-md);
+}
+
+.card {
+  position: relative;
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  cursor: pointer;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.locked {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+.unlocked {
+  background: linear-gradient(155deg, rgba(108, 92, 231, 0.18) 0%, rgba(0, 217, 181, 0.12) 100%);
+  border: 1px solid rgba(0, 217, 181, 0.35);
+  box-shadow: 0 8px 30px rgba(108, 92, 231, 0.2);
+}
+
+.card:active {
+  background: linear-gradient(155deg, rgba(108, 92, 231, 0.3) 0%, rgba(0, 217, 181, 0.2) 100%) !important;
+  border-color: rgba(0, 217, 181, 0.5) !important;
+}
+
+.card:active .rewardTitle {
+  color: #ffffff !important;
+}
+
+.card:active .condition {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+.card:active .sparkleIcon {
+  opacity: 1 !important;
+  color: var(--accent-amber) !important;
+}
+
+.locked:active,
+.unlocked:active {
+  background: var(--gradient-primary) !important;
+  border-color: transparent !important;
+}
+
+.locked:active .rewardTitle,
+.unlocked:active .rewardTitle,
+.locked:active .condition,
+.unlocked:active .condition {
+  color: #fff !important;
+}
+
+.locked:active .sparkleIcon,
+.unlocked:active .sparkleIcon {
+  color: #fff !important;
+  opacity: 1 !important;
+}
+
+.cardInner {
+  position: relative;
+  z-index: 1;
+}
+
+.statusIcon {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.locked .statusIcon {
+  background: rgba(255, 255, 255, 0.06);
+  color: var(--text-dark-muted);
+}
+
+.unlocked .statusIcon {
+  background: var(--accent-emerald);
+  color: #fff;
+}
+
+.sparkleIcon {
+  color: var(--accent-amber);
+  margin-bottom: var(--space-sm);
+  opacity: 0.9;
+}
+
+.locked .sparkleIcon {
+  opacity: 0.35;
+  color: var(--text-dark-muted);
+}
+
+.rewardTitle {
+  font-size: 1.3rem;
+  color: var(--text-dark-primary);
+  margin-bottom: 2px;
+}
+
+.rewardSubtitle {
+  font-size: var(--fs-small);
+  color: var(--accent-teal);
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+}
+
+.condition {
+  font-size: var(--fs-small);
+  color: var(--text-dark-secondary);
+  line-height: 1.5;
+  margin-top: var(--space-sm);
+}
+
+.unlockedBadge {
+  display: inline-block;
+  margin-top: var(--space-md);
+  padding: 4px 12px;
+  border-radius: var(--radius-pill);
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--accent-emerald);
+  font-size: var(--fs-xs);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.shine {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    perspective: none;
+  }
+
+  .card {
+    transform: none !important;
+  }
+
+  .card:active {
+    background: linear-gradient(155deg, rgba(108, 92, 231, 0.22) 0%, rgba(0, 217, 181, 0.15) 100%);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    transform: none !important;
+  }
+}
+

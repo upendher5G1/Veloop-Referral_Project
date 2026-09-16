@@ -1,0 +1,119 @@
+.wrapper {
+  position: relative;
+  z-index: 1;
+  max-width: 640px;
+  margin: var(--space-lg) auto 0;
+  text-align: center;
+}
+
+.label {
+  display: block;
+  font-size: var(--fs-xs);
+  color: var(--text-dark-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+}
+
+.buttonRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.iconBtn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: var(--radius-lg);
+  color: #fff;
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  backdrop-filter: var(--glass-blur);
+  overflow: hidden;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.iconBtn::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.35) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.iconBtn:hover {
+  transform: translateY(-4px) scale(1.06);
+}
+
+.iconBtn:active::after {
+  opacity: 1;
+  transform: scale(1.4);
+  transition: opacity 0s, transform 0s;
+}
+
+.whatsapp {
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border-color: transparent;
+}
+.whatsapp:hover {
+  box-shadow: 0 10px 24px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp:active {
+  box-shadow: 0 6px 16px rgba(37, 211, 102, 0.5);
+  transform: scale(0.95);
+}
+
+.instagram {
+  background: linear-gradient(135deg, #f58529, #dd2a7b 50%, #8134af 100%);
+  border-color: transparent;
+}
+.instagram:hover {
+  box-shadow: 0 10px 24px rgba(221, 42, 123, 0.4);
+}
+
+.facebook {
+  background: linear-gradient(135deg, #1877f2, #0a5cd1);
+  border-color: transparent;
+}
+.facebook:hover {
+  box-shadow: 0 10px 24px rgba(24, 119, 242, 0.4);
+}
+
+.copyLink {
+  background: var(--glass-bg);
+  color: var(--text-dark-primary);
+}
+.copyLink:hover {
+  box-shadow: var(--shadow-glow-teal);
+  border-color: var(--accent-teal);
+}
+
+.nativeShare {
+  background: var(--gradient-primary);
+  border-color: transparent;
+}
+.nativeShare:hover {
+  box-shadow: var(--shadow-glow-indigo);
+}
+
+@media (max-width: 480px) {
+  .iconBtn {
+    width: 46px;
+    height: 46px;
+  }
+
+  .buttonRow {
+    gap: var(--space-sm);
+  }
+}

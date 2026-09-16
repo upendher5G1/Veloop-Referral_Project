@@ -1,0 +1,35 @@
+.layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.icon {
+  position: absolute;
+  opacity: 0.18;
+}
+
+@media (max-width: 768px) {
+  .icon {
+    opacity: 0.12;
+    transform: scale(0.75);
+  }
+}
+
+@media (max-width: 480px) {
+  .icon:nth-child(1) {
+    top: 2% !important;
+    left: -4% !important;
+  }
+
+  .icon:nth-child(2) {
+    top: 4% !important;
+    left: 82% !important;
+  }
+
+  .icon:nth-child(3),
+  .icon:nth-child(4) {
+    display: none;
+  }
+}

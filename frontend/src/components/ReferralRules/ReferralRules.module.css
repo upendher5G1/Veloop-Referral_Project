@@ -1,0 +1,162 @@
+.panel {
+  position: relative;
+  width: 100%;
+  background: linear-gradient(155deg, #0f1f1c 0%, #142822 100%);
+  border: 1px solid rgba(0, 217, 181, 0.15);
+  border-radius: var(--radius-xl);
+  padding: var(--space-2xl) var(--space-lg);
+  box-shadow: 0 20px 60px rgba(10, 20, 18, 0.35);
+  overflow: hidden;
+  margin: var(--space-lg) 0;
+}
+
+.panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-mesh);
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.badgeLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.floatBadge {
+  position: absolute;
+  opacity: 0.16;
+}
+
+.header {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  margin-bottom: var(--space-xl);
+}
+
+.title {
+  font-size: var(--fs-h2);
+  color: var(--text-dark-primary);
+  margin-bottom: var(--space-xs);
+}
+
+.subtitle {
+  font-size: var(--fs-body-lg);
+  color: rgba(255, 255, 255, 0.75);
+}
+.grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-md);
+}
+
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  cursor: default;
+  transition: background var(--transition-base), border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.card:hover {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(139, 124, 246, 0.35);
+  box-shadow: 0 12px 28px rgba(108, 92, 231, 0.25);
+}
+
+.card:active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(139, 124, 246, 0.4);
+}
+
+.card:active {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(139, 124, 246, 0.4);
+}
+
+.iconWrap {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(108, 92, 231, 0.15);
+  color: var(--accent-indigo-light);
+  transition: background var(--transition-base), color var(--transition-base);
+}
+
+.card:hover .iconWrap {
+  background: var(--gradient-primary);
+  color: #fff;
+}
+
+.ruleText {
+  font-size: var(--fs-small);
+  color: var(--text-dark-secondary);
+  line-height: 1.6;
+  padding-top: 8px;
+}
+
+@media (max-width: 700px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .panel {
+    padding: var(--space-lg) var(--space-md);
+  }
+
+  .card {
+    padding: var(--space-md);
+  }
+
+  .badgeLayer {
+    display: none;
+  }
+
+
+  .card {
+    padding: var(--space-sm) var(--space-md);
+    gap: var(--space-sm);
+  }
+
+  .iconWrap {
+    width: 32px;
+    height: 32px;
+  }
+
+  .ruleText {
+    font-size: var(--fs-xs);
+    padding-top: 4px;
+  }
+
+  .floatBadge {
+    opacity: 0.08;
+    transform: scale(0.55);
+  }
+
+  .card {
+    padding: var(--space-md);
+  }
+
+  .floatBadge {
+    opacity: 0.1;
+    transform: scale(0.7);
+  }
+}
